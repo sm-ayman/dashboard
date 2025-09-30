@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
-
+import icon from "/dashboard.png";
+import { IoMdLogOut } from "react-icons/io";
 const Navbar = () => {
   return (
     <div className="navbar bg-base-100 shadow-sm">
@@ -27,22 +28,42 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-          <li className="font-semibold"><Link to='/'>Home</Link></li>
-          <li className="font-semibold"><Link to='/about' >About</Link></li>
-          <li className="font-semibold"><Link to='/contact' >Contact</Link></li>
+            <li className="font-semibold">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="font-semibold">
+              <Link to="/about">About</Link>
+            </li>
+            <li className="font-semibold">
+              <Link to="/contact">Contact</Link>
+            </li>
           </ul>
         </div>
-        <a className="font-bold text-xl text-indigo-600">Dashboard</a>
+        <div>
+          <a className="flex gap-2 font-bold text-xl text-indigo-600">
+            <span>Dashboard</span>
+            <img src={icon} alt="" className="w-8" />
+          </a>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li className="font-semibold"><Link to='/'>Home</Link></li>
-          <li className="font-semibold"><Link to='/about' >About</Link></li>
-          <li className="font-semibold"><Link to='/contact' >Contact</Link></li>
+          <li className="font-semibold">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="font-semibold">
+            <Link to="/about">About</Link>
+          </li>
+          <li className="font-semibold">
+            <Link to="/contact">Contact</Link>
+          </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Log Out</a>
+        <a className="btn">
+          <IoMdLogOut size={20}/>
+          Log Out
+        </a>
       </div>
     </div>
   );
