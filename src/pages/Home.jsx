@@ -1,12 +1,14 @@
 import React from "react";
+import { useLoaderData } from "react-router";
 
 const Home = () => {
-  const stats = [
-    { id: 1, title: "Posts", count: 100, color: "bg-blue-500" },
-    { id: 2, title: "Users", count: 10, color: "bg-green-500" },
-    { id: 3, title: "Todos", count: 200, color: "bg-orange-500" },
-  ];
+  const { postsCount, usersCount, todosCount } = useLoaderData();
 
+  const stats = [
+    { id: 1, title: "Posts", count: postsCount, color: "bg-blue-500" },
+    { id: 2, title: "Users", count: usersCount, color: "bg-green-500" },
+    { id: 3, title: "Todos", count: todosCount, color: "bg-orange-500" },
+  ];
   return (
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-6">Dashboard Overview</h1>

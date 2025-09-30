@@ -19,7 +19,29 @@ const router = createBrowserRouter([
     path: "/",
     element: <App></App>,
     children: [
-      { index: true, element: <Home></Home> },
+      {
+        index: true,
+        loader: async () => {
+          const [posts, users, todos] = await Promise.all([
+            fetch("https://jsonplaceholder.typicode.com/posts").then((res) =>
+              res.json()
+            ),
+            fetch("https://jsonplaceholder.typicode.com/users").then((res) =>
+              res.json()
+            ),
+            fetch("https://jsonplaceholder.typicode.com/todos").then((res) =>
+              res.json()
+            ),
+          ]);
+
+          return {
+            postsCount: posts.length,
+            usersCount: users.length,
+            todosCount: todos.length,
+          };
+        },
+        element: <Home></Home>,
+      },
       { path: "/about", element: <About></About> },
       { path: "/contact", element: <Contact></Contact> },
       {
